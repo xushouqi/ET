@@ -18,6 +18,7 @@ namespace ETModel
 		/// </summary>
 		public TService(IPEndPoint ipEndPoint)
 		{
+            Console.WriteLine("ipEndPoint = " + ipEndPoint.Address);
 			this.acceptor = new TcpListener(ipEndPoint);
 			this.acceptor.Server.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 			this.acceptor.Server.NoDelay = true;
