@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Threading;
+using System.IO;
 using ETModel;
 using MongoDB.Bson.Serialization;
 using NLog;
@@ -18,7 +19,11 @@ namespace App
 			try
 			{
 				Game.EventSystem.Add(DLLType.Model, typeof(Game).Assembly);
-				Game.EventSystem.Add(DLLType.Hotfix, DllHelper.GetHotfixAssembly());
+                //Game.EventSystem.Add(DLLType.Hotfix, DllHelper.GetHotfixAssembly());
+                //xu
+                string currentDirectory = Path.GetDirectoryName(typeof(Game).Assembly.Location);
+                Console.WriteLine(Path.GetFullPath(currentDirectory));
+                Game.EventSystem.Add(DLLType.Hotfix, DllHelperEx.GetHotfixAssembly(currentDirectory));
 
 				Options options = Game.Scene.AddComponent<OptionComponent, string[]>(args).Options;
 				StartConfig startConfig = Game.Scene.AddComponent<StartConfigComponent, string, int>(options.Config, options.AppId).StartConfig;

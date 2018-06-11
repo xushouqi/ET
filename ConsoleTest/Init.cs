@@ -36,7 +36,8 @@ namespace ConsoleTest
             Game.Scene.AddComponent<MessageDispatherComponent>();
 
 
-            IPEndPoint connetEndPoint = NetworkHelper.ToIPEndPoint("127.0.0.1:10002");
+            //IPEndPoint connetEndPoint = NetworkHelper.ToIPEndPoint("127.0.0.1:10002");
+            IPEndPoint connetEndPoint = NetworkHelper.ToIPEndPoint("192.168.1.168:10002");
 
             // 创建一个ETModel层的Session
             var session = ETModel.Game.Scene.GetComponent<NetOuterComponent>().Create(connetEndPoint);
