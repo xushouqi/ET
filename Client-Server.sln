@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDB.Driver", "Server\Th
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDB.Driver.Core", "Server\ThirdParty\MongodbDriver\DotNetCoreDriver\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj", "{831276B2-B7EB-4FD0-93E5-4D2109C78950}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -175,6 +177,18 @@ Global
 		{831276B2-B7EB-4FD0-93E5-4D2109C78950}.Release|x64.Build.0 = Release|Any CPU
 		{831276B2-B7EB-4FD0-93E5-4D2109C78950}.Release|x86.ActiveCfg = Release|Any CPU
 		{831276B2-B7EB-4FD0-93E5-4D2109C78950}.Release|x86.Build.0 = Release|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Debug|x64.Build.0 = Debug|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Debug|x86.Build.0 = Debug|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Release|x64.ActiveCfg = Release|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Release|x64.Build.0 = Release|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Release|x86.ActiveCfg = Release|Any CPU
+		{3033FBFE-2F2D-450B-B48E-5BAC0EE3EE0C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
