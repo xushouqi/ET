@@ -28,8 +28,13 @@ namespace ETModel
 			this.parser = new PacketParser(this.recvBuffer);
 			this.RemoteAddress = ipEndPoint;
 
-			this.ConnectAsync(ipEndPoint);
-		}
+			//this.ConnectAsync(ipEndPoint);
+            this.tcpClient.Connect(ipEndPoint.Address, ipEndPoint.Port);
+
+            this.isConnected = true;
+            this.StartSend();
+            this.StartRecv();
+        }
 
 		/// <summary>
 		/// accept
@@ -41,7 +46,8 @@ namespace ETModel
 
 			IPEndPoint ipEndPoint = (IPEndPoint)this.tcpClient.Client.RemoteEndPoint;
 			this.RemoteAddress = ipEndPoint;
-			this.OnAccepted();
+            Console.WriteLine($"TChannel accept: remote = {ipEndPoint}, LocalEndPoint = {this.tcpClient.Client.LocalEndPoint}");
+            this.OnAccepted();
 		}
 
 		private async void ConnectAsync(IPEndPoint ipEndPoint)
@@ -152,7 +158,8 @@ namespace ETModel
 						return;
 					}
 
-					await this.sendBuffer.WriteToAsync(stream);
+                    Console.WriteLine($"TChannel WriteToAsync: RemoteAddress = {RemoteAddress}, LocalEndPoint = {this.tcpClient.Client.LocalEndPoint}, sendBuffer.Length = {sendBuffer.Length}");
+                    await this.sendBuffer.WriteToAsync(stream);
 				}
 			}
 			catch (IOException)
@@ -188,9 +195,11 @@ namespace ETModel
 						return;
 					}
 
-					int n = await this.recvBuffer.ReadFromAsync(stream);
+                    Console.WriteLine($"TChannel StartRecv: RemoteAddress = {RemoteAddress}, LocalEndPoint = {this.tcpClient.Client.LocalEndPoint}");
+                    int n = await this.recvBuffer.ReadFromAsync(stream);
+                    Console.WriteLine($"TChannel ReadFromAsync: RemoteAddress = {RemoteAddress}, LocalEndPoint = {this.tcpClient.Client.LocalEndPoint}, n = {n}");
 
-					if (n == 0)
+                    if (n == 0)
 					{
 						this.OnError((int)SocketError.NetworkReset);
 						return;
@@ -204,7 +213,8 @@ namespace ETModel
 						}
 
 						Packet packet = this.parser.GetPacket();
-						this.OnRead(packet);
+                        Console.WriteLine($"TChannel ReadFromAsync: packet.Opcode = {packet.Opcode}");
+                        this.OnRead(packet);
 					}
 				}
 			}
