@@ -20,13 +20,14 @@ namespace App
 			{
 				Game.EventSystem.Add(DLLType.Model, typeof(Game).Assembly);
                 //Game.EventSystem.Add(DLLType.Hotfix, DllHelper.GetHotfixAssembly());
-                //xu
+                //xu: dontcore的CurrentDir是命令行当前目录，而不是程序执行的当前目录，所以需要这么获取
                 string currentDirectory = Path.GetDirectoryName(typeof(Game).Assembly.Location);
-                Console.WriteLine(Path.GetFullPath(currentDirectory));
                 Game.EventSystem.Add(DLLType.Hotfix, DllHelperEx.GetHotfixAssembly(currentDirectory));
 
-				Options options = Game.Scene.AddComponent<OptionComponent, string[]>(args).Options;
-				StartConfig startConfig = Game.Scene.AddComponent<StartConfigComponent, string, int>(options.Config, options.AppId).StartConfig;
+                Options options = Game.Scene.AddComponent<OptionComponent, string[]>(args).Options;
+                Console.WriteLine(options.Config);
+                Console.WriteLine(Path.GetFullPath(options.Config));
+                StartConfig startConfig = Game.Scene.AddComponent<StartConfigComponent, string, int>(options.Config, options.AppId).StartConfig;
 
 				if (!options.AppType.Is(startConfig.AppType))
 				{
