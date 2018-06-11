@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Server\Model\Server.Model.csproj" />
+    <ProjectReference Include="..\Unity\Hotfix\Unity.Hotfix.csproj" />
   </ItemGroup>
 
 </Project>
