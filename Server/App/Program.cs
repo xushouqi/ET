@@ -25,11 +25,12 @@ namespace App
                 Game.EventSystem.Add(DLLType.Hotfix, DllHelperEx.GetHotfixAssembly(currentDirectory));
 
                 Options options = Game.Scene.AddComponent<OptionComponent, string[]>(args).Options;
-                Console.WriteLine(options.Config);
-                Console.WriteLine(Path.GetFullPath(options.Config));
-                StartConfig startConfig = Game.Scene.AddComponent<StartConfigComponent, string, int>(options.Config, options.AppId).StartConfig;
+                var cfgPath = Path.Combine(currentDirectory, options.Config);
+                Console.WriteLine(cfgPath);
+                StartConfig startConfig = Game.Scene.AddComponent<StartConfigComponent, string, int>(cfgPath, options.AppId).StartConfig;
+                //StartConfig startConfig = Game.Scene.AddComponent<StartConfigComponent, string, int>(options.Config, options.AppId).StartConfig;
 
-				if (!options.AppType.Is(startConfig.AppType))
+                if (!options.AppType.Is(startConfig.AppType))
 				{
 					Log.Error("命令行参数apptype与配置不一致");
 					return;
